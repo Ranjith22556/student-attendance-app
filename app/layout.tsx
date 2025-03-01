@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 import { SessionProvider } from "@/components/session-provider"
 import UserInitializer from "@/components/user-initializer"
+import { Footer } from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
               <div className="relative min-h-screen flex flex-col">
                 <Navbar />
                 <main className="flex-1">{children}</main>
+                <Footer />
                 <UserInitializer />
                 <Toaster />
               </div>
