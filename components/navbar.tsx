@@ -30,6 +30,7 @@ import {
 } from "lucide-react"
 import { ModeToggle } from "./mode-toggle"
 import { cn } from "@/lib/utils"
+import React from "react"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -245,7 +246,7 @@ export function Navbar() {
       
       {/* Mobile Navigation */}
       {session?.user && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 border-t bg-background z-50 px-4 py-2">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 px-4 py-2 pb-safe shadow-md">
           <div className="flex items-center justify-between">
             {navLinks.map((link) => (
               <Link 
@@ -254,12 +255,12 @@ export function Navbar() {
                 className={cn(
                   "flex flex-col items-center justify-center p-2 rounded-md transition-colors",
                   pathname === link.href 
-                    ? "text-primary" 
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-primary bg-primary/10 font-medium" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-background/80"
                 )}
               >
                 <div className="mb-1">
-                  {link.icon}
+                  {React.cloneElement(link.icon, { className: "h-5 w-5" })}
                 </div>
                 <span className="text-xs">{link.label}</span>
               </Link>

@@ -248,24 +248,24 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="container py-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">
+    <div className="container py-4 md:py-6">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
           Welcome, {session?.user?.name}! {isNewUser ? "Let's set up your attendance tracking." : "Here's an overview of your attendance."}
         </p>
       </div>
 
       {isNewUser ? (
-        <Card className="mb-8">
+        <Card className="mb-6 md:mb-8">
           <CardContent className="pt-6">
-            <div className="text-center py-8">
-              <Calendar className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
-              <h2 className="text-2xl font-semibold mb-2">Get Started with Attendance Tracking</h2>
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            <div className="text-center py-6 md:py-8">
+              <Calendar className="h-12 w-12 md:h-16 md:w-16 mx-auto mb-3 md:mb-4 text-muted-foreground opacity-50" />
+              <h2 className="text-xl md:text-2xl font-semibold mb-2">Get Started with Attendance Tracking</h2>
+              <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-md mx-auto">
                 Welcome to your attendance dashboard! Start by setting up your timetable to track your classes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                 <Button asChild className="flex items-center gap-2">
                   <Link href="/timetable">
                     <PlusCircle className="h-4 w-4" />
@@ -280,33 +280,33 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Classes Today</CardTitle>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-3 md:px-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Classes Today</CardTitle>
               <CalendarDays className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{todayClasses.length}</div>
+            <CardContent className="px-3 md:px-6">
+              <div className="text-xl md:text-2xl font-bold">{todayClasses.length}</div>
               {todayClasses.length > 0 ? (
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground truncate">
                   {todayClasses.map(cls => cls.subject).join(', ')}
                 </p>
               ) : (
-                <p className="text-xs text-muted-foreground">No classes scheduled today</p>
+                <p className="text-xs text-muted-foreground">No classes today</p>
               )}
-              <Button variant="link" size="sm" className="px-0 mt-1" asChild>
+              <Button variant="link" size="sm" className="px-0 mt-1 h-auto text-xs md:text-sm" asChild>
                 <Link href="/timetable">View timetable</Link>
               </Button>
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Next Class</CardTitle>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-3 md:px-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Next Class</CardTitle>
               <Clock className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
+            <CardContent className="px-3 md:px-6">
+              <div className="text-xl md:text-2xl font-bold">
                 {nextClass ? nextClass.subject : '--'}
               </div>
               {nextClass ? (
@@ -316,18 +316,18 @@ export default function DashboardPage() {
               ) : (
                 <p className="text-xs text-muted-foreground">No upcoming classes today</p>
               )}
-              <Button variant="link" size="sm" className="px-0 mt-1" asChild>
+              <Button variant="link" size="sm" className="px-0 mt-1 h-auto text-xs md:text-sm" asChild>
                 <Link href="/check-in">Check in</Link>
               </Button>
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Current Streak</CardTitle>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-3 md:px-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Current Streak</CardTitle>
               <Flame className="h-4 w-4 text-orange-500" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
+            <CardContent className="px-3 md:px-6">
+              <div className="text-xl md:text-2xl font-bold">
                 {stats?.overall?.attendedClasses && stats.overall.attendedClasses > 0 ? '1 day' : '0 days'}
               </div>
               <p className="text-xs text-muted-foreground">
@@ -335,18 +335,18 @@ export default function DashboardPage() {
                   ? 'Keep it up!' 
                   : 'Start your streak!'}
               </p>
-              <Button variant="link" size="sm" className="px-0 mt-1" asChild>
+              <Button variant="link" size="sm" className="px-0 mt-1 h-auto text-xs md:text-sm" asChild>
                 <Link href="/achievements">View achievements</Link>
               </Button>
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Subjects</CardTitle>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-3 md:px-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Total Subjects</CardTitle>
               <BookOpen className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
+            <CardContent className="px-3 md:px-6">
+              <div className="text-xl md:text-2xl font-bold">
                 {stats?.subjects ? stats.subjects.length : 0}
               </div>
               <p className="text-xs text-muted-foreground">
@@ -354,7 +354,7 @@ export default function DashboardPage() {
                   ? `${stats.subjects.filter(s => s.hourlyAttendanceRate >= 75).length} subjects above 75%` 
                   : 'No subjects added yet'}
               </p>
-              <Button variant="link" size="sm" className="px-0 mt-1" asChild>
+              <Button variant="link" size="sm" className="px-0 mt-1 h-auto text-xs md:text-sm" asChild>
                 <Link href="/timetable">Manage subjects</Link>
               </Button>
             </CardContent>
@@ -362,14 +362,14 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <div className="mt-8 mb-4">
-        <h2 className="text-xl font-semibold tracking-tight flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-primary" />
+      <div className="mt-6 md:mt-8 mb-3 md:mb-4">
+        <h2 className="text-lg md:text-xl font-semibold tracking-tight flex items-center gap-2">
+          <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
           Quick Actions
         </h2>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
+      <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-6 md:mb-8">
         <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border-none overflow-hidden group hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
           <CardHeader className="pb-2">
             <CardTitle className="text-base">Check In</CardTitle>
