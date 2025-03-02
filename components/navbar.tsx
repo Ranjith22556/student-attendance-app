@@ -233,9 +233,12 @@ export function Navbar() {
               </DropdownMenu>
             </>
           ) : (
-            <Button variant="outline" size="sm" asChild className="font-medium">
-              <Link href="/">Sign In</Link>
-            </Button>
+            // Only show the Sign In button if we're not on the home page (which is the login page)
+            !isHomePage && (
+              <Button variant="outline" size="sm" asChild className="font-medium">
+                <Link href="/">Sign In</Link>
+              </Button>
+            )
           )}
         </div>
       </div>
