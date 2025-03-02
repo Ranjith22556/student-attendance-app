@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Student Attendance App
+            © {new Date().getFullYear()} Studance
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             Developed by Y. Ranjith Kumar Reddy & N. Bhupathi Reddy

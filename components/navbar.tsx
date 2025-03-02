@@ -123,7 +123,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center justify-center h-8 w-8 rounded-full bg-primary/10">
               <Sparkles className="h-4 w-4 text-primary" />
             </div>
-            <span className="font-bold text-lg">Student Attendance</span>
+            <span className="font-bold text-lg">Studance</span>
           </Link>
         </div>
         

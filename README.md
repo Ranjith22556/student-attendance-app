@@ -1,4 +1,4 @@
-# Student Attendance App
+# Studance
 
 A modern web application for tracking student attendance with a beautiful UI and comprehensive features.
 
